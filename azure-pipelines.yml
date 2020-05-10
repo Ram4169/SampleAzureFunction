@@ -18,18 +18,13 @@ variables:
 
   # Working Directory
   workingDirectory: '$(System.DefaultWorkingDirectory)/'
-
-stages:
-- stage: Build
-  displayName: Build stage
-
-  jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: $(vmImageName)
-
-    steps:
-    - task: ArchiveFiles@2
-      displayName: 'Archive FunctionApp'
-    - task: PublishPipelineArtifact@1
+  pool:
+    vmImage: $(vmImageName)
+  steps:
+  - task: ArchiveFiles@2
+    displayName: 'Archive FunctionApp'
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    includeRootFolder: false
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
