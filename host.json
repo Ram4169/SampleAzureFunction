@@ -5,6 +5,6 @@
     "version": "[1.*, 2.0.0)"
   },
   "managedDependency": {
-    "enabled": false
+    "enabled": true
   }
 }
